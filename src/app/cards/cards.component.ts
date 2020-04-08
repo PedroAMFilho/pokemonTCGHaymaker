@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardContent } from '../card';
+import { Cards } from '../card';
 import { CardService } from '../card.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CardService } from '../card.service';
 })
 export class CardsComponent implements OnInit {
 
-  cards: CardContent[];
+  cards: Cards['cards'];
 
   constructor(private cardService: CardService) { }
 
@@ -19,6 +19,6 @@ export class CardsComponent implements OnInit {
 
   getCards(): void {
     this.cardService.getCards()
-    .subscribe(cards => this.cards = cards);
+    .subscribe(cards => this.cards = cards.sort((a,b) => a.name.localeCompare(b.name)));
   }
 }

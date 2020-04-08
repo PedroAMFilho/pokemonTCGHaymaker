@@ -5,7 +5,7 @@ import { CardService } from '../card.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.scss' ]
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   cards: Cards['cards'];
@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   ngOnInit() {
-     this.getCards();
+    this.getCards();
   }
 
-   getCards(): void {
-     this.cardService.getCards()
-       .subscribe(cards => this.cards = cards);
-   }
+  getCards(): void {
+    this.cardService.getCards()
+      .subscribe(cards => this.cards = cards.sort((a,b) => a.name.localeCompare(b.name)));
+  }
 }
