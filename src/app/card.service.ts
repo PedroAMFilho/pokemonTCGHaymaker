@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, from} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { CardModel } from './card';
+import { Cards } from './card';
+import { Card } from './card';
+import { CardContent } from './card';
 import { Cardmock } from './mock-cards';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CardsComponent } from './cards/cards.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,33 +20,33 @@ export class CardService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  getCards(): Observable<CardModel['cards']> {
-    return this.http.get<CardModel['cards']>(this.cardsUrl).pipe(
+  getCards(): Observable<Cards['cards']> {
+    return this.http.get<Cards['cards']>(this.cardsUrl).pipe(
+      map(data => data['cards']),
       tap(_ => this.log('fetched cards')),
-      catchError(this.handleError<CardModel['cards']>('getCards', []))
+      catchError(this.handleError<Cards['cards']>('getCards', []))
     );
   }
 
-  getCard(id: string): Observable<CardModel>{
+  getCard(id: string): Observable<CardContent>{
     const url = `${this.cardsUrl}/${id}`;
-    return this.http.get<CardModel>(url).pipe(
+    return this.http.get<CardContent>(url).pipe(
+      map(data => data['card']),
       tap(_ => this.log(`fetched card id=${id}`)),
-      catchError(this.handleError<CardModel>(`getCard id=${id}`))
+      catchError(this.handleError<Card>(`getCard id=${id}`))
     );
-    //this.messageService.add(`CardService: fetched card id=${id}`);
-    //return of (Cardmock.find(card => cards.id === id));
   }
   
-  searchCards(term: string): Observable<CardModel[]> {
+  searchCards(term: string): Observable<Cards[]> {
     if (!term.trim()) {
       // if not search term, return empty card array.
       return of([]);
     }
-    return this.http.get<CardModel[]>(`${this.cardsUrl}/?name=${term}`).pipe(
+    return this.http.get<Cards[]>(`${this.cardsUrl}/?name=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found heroes matching "${term}"`) :
          this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<CardModel[]>('searchCards', []))
+      catchError(this.handleError<Cards[]>('searchCards', []))
     );
   }
 

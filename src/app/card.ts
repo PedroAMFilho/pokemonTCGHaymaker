@@ -1,54 +1,35 @@
-export interface CardModel {
-    cards?: Array<{
-        id: string;
-        name: string;
-        nationalPokedexNumber?: number;
-        imageUrl: string;
-        imageUrlHiRes: string;
-        types?: Array<string>;
-        supertype: string;
-        subtype: string;
-        evolvesFrom?: string;
-        hp?: string;
-        retreatCost?: Array<string>;
-        convertedRetreatCost?: number;
-        ability?: Ability;
-        number: string;
-        artist?: string;
-        rarity: string;
-        series: string;
-        set: string;
-        text?: Array<string>;
-        setCode: string;
-        attacks?: Array<Attack>;
-        resistances?: Array<Resistance>;
-        weaknesses?: Array<Weakness>;
-    }>;
+export interface Cards {
+    cards: Array<CardContent>;
+}
 
-    card?: {id: string;
-        name: string;
-        nationalPokedexNumber?: number;
-        imageUrl: string;
-        imageUrlHiRes: string;
-        types?: Array<string>;
-        supertype: string;
-        subtype: string;
-        evolvesFrom?: string;
-        hp?: string;
-        retreatCost?: Array<string>;
-        convertedRetreatCost?: number;
-        ability?: Ability;
-        number: string;
-        artist?: string;
-        rarity: string;
-        series: string;
-        set: string;
-        text?: Array<string>;
-        setCode: string;
-        attacks?: Array<Attack>;
-        resistances?: Array<Resistance>;
-        weaknesses?: Array<Weakness>;
-    }
+export interface Card {
+    card: CardContent;
+}
+
+export interface CardContent {
+    id: string;
+    name: string;
+    nationalPokedexNumber?: number;
+    imageUrl: string;
+    imageUrlHiRes: string;
+    types?: Array<string>;
+    supertype: string;
+    subtype: string;
+    evolvesFrom?: string;
+    hp?: string;
+    retreatCost?: Array<string>;
+    convertedRetreatCost?: number;
+    ability?: Ability;
+    number: string;
+    artist?: string;
+    rarity: string;
+    series: string;
+    set: string;
+    text?: Array<string>;
+    setCode: string;
+    attacks?: Array<Attack>;
+    resistances?: Array<Resistance>;
+    weaknesses?: Array<Weakness>;
 }
 
 interface Attack {

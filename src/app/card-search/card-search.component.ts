@@ -4,7 +4,7 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import {CardModel} from '../card'
+import {Cards} from '../card'
 import {CardService} from '../card.service'
 
 @Component({
@@ -15,7 +15,7 @@ import {CardService} from '../card.service'
 
 export class CardSearchComponent implements OnInit {
 
-  cards: Observable<CardModel[]>;
+  cards: Observable<Cards[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private cardService: CardService) {}

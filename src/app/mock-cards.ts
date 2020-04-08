@@ -1,6 +1,6 @@
-import { CardModel } from './card';
+import { Cards } from './card';
 
-export const Cardmock: CardModel[] =  [{
+export const Cardmock: Cards[] =  [{
   "cards": [
       {
           "id": "dp6-90",

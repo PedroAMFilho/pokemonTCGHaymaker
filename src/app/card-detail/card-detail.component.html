@@ -1,27 +1,27 @@
-<div *ngIf="cards.card">
-  <h2>{{cards.card.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{cards.card.id}}</div>
+<div *ngIf="card">
+  <h2>{{card.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{card.id}}</div>
   <div>
     <label>name:
-      <h1>{{cards.card.name}}</h1>
+      <h1>{{card.name}}</h1>
     </label>
   </div>
   <div>
-    <img src="{{cards.card.imageUrlHiRes}}">
+    <img src="{{card.imageUrlHiRes}}">
   </div>
   <div>
-    <li *ngFor="let type of cards.card.types">
+    <li *ngFor="let type of card.types">
       <label>{{type}}</label>
     </li>
-    <li *ngFor="let attack of cards.card.attacks">
+    <li *ngFor="let attack of card.attacks">
       <span>{{attack.cost}} </span>
       <span>{{attack.name}} {{attack.damage}}</span>
       <span>{{attack.text}}</span>
     </li>
-    <li *ngFor="let resistance of cards.card.resistances">
+    <li *ngFor="let resistance of card.resistances">
       <label>{{resistance.type}} {{resistance.value}}</label>
     </li>
-    <li *ngFor="let weakness of cards.card.weaknesses">
+    <li *ngFor="let weakness of card.weaknesses">
       <label>{{weakness.type}} {{weakness.value}}</label>
     </li>
   </div>

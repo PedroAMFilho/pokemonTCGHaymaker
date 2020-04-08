@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardModel } from '../card';
+import { CardContent } from '../card';
 import { CardService } from '../card.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CardService } from '../card.service';
 })
 export class CardsComponent implements OnInit {
 
-  cards: CardModel['cards'];
+  cards: CardContent[];
 
   constructor(private cardService: CardService) { }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { CardModel } from '../card';
+import { Card } from '../card';
+import { CardContent } from '../card'
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../card.service';
 
@@ -11,7 +12,7 @@ import { CardService } from '../card.service';
 })
 export class CardDetailComponent implements OnInit {
 
-  @Input() cards: CardModel;
+  @Input() card: CardContent;
   
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +27,7 @@ export class CardDetailComponent implements OnInit {
   getCard(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.cardService.getCard(id)
-    .subscribe(cards => this.cards = cards)
+    .subscribe(card => this.card = card)
   }
 
   goBack(): void {

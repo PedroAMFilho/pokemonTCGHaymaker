@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardModel } from '../card';
+import { Cards } from '../card';
 import { CardService } from '../card.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CardService } from '../card.service';
   styleUrls: [ './dashboard.component.scss' ]
 })
 export class DashboardComponent implements OnInit {
-  cards: CardModel['cards'] = [];
+  cards: Cards['cards'];
 
   constructor(private cardService: CardService) { }
 
