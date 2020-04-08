@@ -37,16 +37,17 @@ export class CardService {
     );
   }
   
-  searchCards(term: string): Observable<Cards[]> {
+  searchCards(term: string): Observable<Cards['cards']> {
     if (!term.trim()) {
       // if not search term, return empty card array.
       return of([]);
     }
-    return this.http.get<Cards[]>(`${this.cardsUrl}/?name=${term}`).pipe(
+    return this.http.get<Cards['cards']>(`${this.cardsUrl}/?name=${term}`).pipe(
+      map(data => data['cards']),
       tap(x => x.length ?
-         this.log(`found heroes matching "${term}"`) :
-         this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<Cards[]>('searchCards', []))
+         this.log(`found cards matching "${term}"`) :
+         this.log(`no cards matching "${term}"`)),
+      catchError(this.handleError<Cards['cards']>('searchCards', []))
     );
   }
 

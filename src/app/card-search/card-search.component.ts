@@ -15,7 +15,7 @@ import {CardService} from '../card.service'
 
 export class CardSearchComponent implements OnInit {
 
-  cards: Observable<Cards[]>;
+  cards: Observable<Cards['cards']>;
   private searchTerms = new Subject<string>();
 
   constructor(private cardService: CardService) {}

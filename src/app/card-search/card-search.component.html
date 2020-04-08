@@ -4,10 +4,10 @@
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
   
     <ul class="search-result">
-      <li *ngFor="let cardsearched of cards | async" ><span>Teste</span>
-        <span class="badge" routerLink="/detail/{{cardsearched.id}}">{{cardsearched.name}}</span>
-        <img src="{{cardsearched.imageUrl}}">
-        <span class="badge">{{cardsearched.id}}</span> {{cardsearched.types}}
+      <li *ngFor="let card of cards | async" ><span>Teste</span>
+        <span class="badge" routerLink="/detail/{{card.id}}">{{card.name}}</span>
+        <img src="{{card.imageUrl}}">
+        <span class="badge">{{card.id}}</span> {{card.types}}
       </li>
     </ul>
   </div>
